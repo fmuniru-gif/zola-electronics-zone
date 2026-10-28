@@ -1,39 +1,37 @@
-# Zola Electronics Zone — public website release 1
+# Zola Electronics Zone — public website
 
-**Launch-ready but NOT deployed.** This website is standalone and must never be uploaded to the operational `tradeflow-zola` repository.
+Standalone static website for **Zola Electronics Zone — “Buy the right one.”** This project is independent of TradeFlow and has no operational database, authentication, checkout or synchronization connection.
 
-## Planned location
+The existing navy/gold design, six category illustrations and supplied promotional photography are retained. The experience review adds a category finder, practical buying prompts, budget/upgrade enquiry messaging, clearer customer care, optional TV trade-in context, persistent mobile contact actions and more useful WhatsApp drafts.
 
-- Separate repository: `fmuniru-gif/zola-electronics-zone`
-- GitHub Pages: `https://fmuniru-gif.github.io/zola-electronics-zone/`
-- Source: branch `main`, folder `/(root)`
-- Release: `20261025-public-website-v1`
+## Review boundary
 
-**The URL is a proposed destination, not a live website.** If you choose a different repository name, update the absolute canonical and Open Graph/Twitter links, the JSON-LD `url`, `robots.txt`, and `sitemap.xml` **before publishing**. Do not modify TradeFlow's existing GitHub Pages configuration.
+This change is on `review/public-website-experience-r1`, based on `812a139808b85f0fad650208d18b5883bbfe7300`. It must be reviewed through its draft PR. It has **not been merged or deployed by this work**. The review workflow only tests and saves screenshots; it cannot publish the site.
 
-## How to publish independently
+The canonical URL configured in source is `https://fmuniru-gif.github.io/zola-electronics-zone/`. If the eventual hostname changes, update canonical/share/schema URLs, `robots.txt` and `sitemap.xml` together before a separately approved publication.
 
-1. In GitHub, create a **new public repository named `zola-electronics-zone`** under `fmuniru-gif`. Do not initialize it from the TradeFlow repository or copy any TradeFlow files.
-2. Upload **all the contents of this folder into the new repository root**, including `index.html`, `styles.css`, `script.js`, `robots.txt`, `sitemap.xml`, `.nojekyll`, and the `assets/` folder. GitHub's browser upload requires extracting this ZIP first; GitHub does not unpack a ZIP as a website automatically. If uploading by browser, make sure the `assets/` relative folder path is preserved.
-3. Open the **new repository** Settings → Pages. Choose `Deploy from a branch`, `main`, `/(root)`, Save.
-4. When the Pages workflow completes, visit `https://fmuniru-gif.github.io/zola-electronics-zone/` and verify the desktop/mobile layout, menu, Contact links, WhatsApp enquiry form, and images. Check that `index.html` contains site-release marker `20261025-public-website-v1`.
-5. Only publicise the link after verifying it. If the repository owner, repo name or hosting platform differs, regenerate the canonical/share/sitemap URLs first.
+## Public-content rules
 
-## Safety boundaries
+- Address: Aliu Mahama Road, Tamale, near Maccasio Fun Base. Phone/WhatsApp: 0553486788.
+- Categories are a guide, not a live stock or price feed. No model-specific availability, prices, discounts, opening hours, delivery coverage or brand authorization is invented.
+- Warranty terms must be confirmed for the specific product. No warranty duration or eligibility is promised.
+- TV trade-in enquiries can include model, screen size, age and condition. Assessments, acceptance and value are not guaranteed; there is no photo upload or automated valuation.
+- The form only prepares a WhatsApp draft on a user action. The visitor chooses whether to send it in WhatsApp. This site has no enquiry API, storage, analytics or cookies. Without JavaScript, the form is disabled and direct phone/WhatsApp links remain available.
+- Promotional imagery is retained from the existing site. The Owner should confirm its continuing suitability before publishing changes.
 
-- No Supabase credentials, business data, TradeFlow code or M4/3 sync connections.
-- No login, checkout, database writes, customer data capture, cookies or third-party analytics.
-- WhatsApp messages are created from user-initiated form submission and open in WhatsApp for review.
-- Product listings intentionally do not claim current stock, prices, brand authorisation or guaranteed warranties.
-- TV trade-in availability and terms are not guaranteed; ask the business to confirm.
+## Local validation
 
-## Owner's final editorial checklist
+Use Node.js 22 and an installed Chrome/Chromium browser:
 
-- Approve the storefront/promotional visuals (they are supplied promotional imagery; verify how accurately they represent the current shop).
-- Verify phone +233 55 348 6788, Aliu Mahama Road address and map-search accuracy.
-- Check all product categories offered and any service/warranty claims.
-- Check actual WhatsApp opening on desktop and mobile before making the site public.
+```text
+npm ci --ignore-scripts
+npm test
+npm run test:browser
+npm run review:visuals
+```
 
-## Local preview
+Set `CHROME_PATH` to the browser executable when it is not the default Windows Chrome path. Browser tests use disposable contexts and intercept every external destination, including WhatsApp, so they send no message or external request. `npm run review:visuals` saves baseline/candidate desktop/mobile screenshots under `test-results/website-review/`, or `WEBSITE_EVIDENCE_DIR` when provided. Baseline files come from the exact Git commit, so full Git history is needed.
 
-Open `index.html`, or run `python -m http.server 8080` from this folder and visit http://localhost:8080.
+The CI workflow runs the same source/browser checks and captures review screenshots with read-only repository permissions. Its artifact is review evidence, not a deployment.
+
+See `docs/public-experience-review.md` for the changed-file report, evidence scope and limits. Real WhatsApp-app handoff and search-engine indexing remain Owner acceptance checks; no conversion-rate or ranking gain is claimed.

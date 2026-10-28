@@ -1,0 +1,50 @@
+name: Public website review (NO DEPLOY)
+on:
+  push:
+    branches: [review/public-website-experience-r1]
+permissions:
+  contents: read
+jobs:
+  website-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      CHROME_PATH: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify exact review head and independent baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git rev-parse origin/main)" = 812a139808b85f0fad650208d18b5883bbfe7300
+          git merge-base --is-ancestor 812a139808b85f0fad650208d18b5883bbfe7300 HEAD
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Functional and safety checks
+        run: npm test
+      - name: Chrome browser checks
+        run: npm run test:browser
+      - name: Baseline and candidate visual evidence
+        env:
+          WEBSITE_EVIDENCE_DIR: ${{ runner.temp }}/website-review
+        run: npm run review:visuals
+      - name: Verify tests do not change source
+        shell: bash
+        run: |
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
+      - name: Save review screenshots
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: website-review-${{ github.sha }}
+          path: ${{ runner.temp }}/website-review
+          if-no-files-found: ignore
+          retention-days: 14
