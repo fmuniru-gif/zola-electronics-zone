@@ -45,3 +45,20 @@ test('public code has no operational data, storage, analytics, checkout or serve
   assert.ok(!html.toLowerCase().includes('tradeflow'));assert.ok(!html.includes('<iframe'));assert.ok(!html.includes('<input type="file"'));
   assert.ok(html.includes('id="enquiryFields" disabled'));assert.ok(html.includes('<noscript>'));assert.ok(script.includes('event.preventDefault()'));assert.ok(script.includes('.textContent = buildEnquiryText'));
 });
+
+
+test('approved official seal replaces the generic header and footer icon without changing hero content',()=>{
+  const current=read('index.html');
+  assert.equal((current.match(/class="brand-logo"/g)||[]).length,2);
+  assert.equal((current.match(/class="brand-tagline"/g)||[]).length,2);
+  assert.ok(!current.includes('class="brand-mark"'));
+  assert.ok(current.includes('<h1>Buy the <em>right one.</em></h1>'));
+  assert.ok(current.includes('assets/storefront.webp'));
+  assert.ok(current.includes('id="productSearch"'));
+  assert.ok(current.includes('id="enquiryForm"'));
+  const logo=path.join(root,'assets/zez-logo-192.webp');
+  assert.ok(fs.existsSync(logo));
+  const bytes=fs.readFileSync(logo);
+  assert.equal(bytes.toString('ascii',0,4),'RIFF');
+  assert.equal(bytes.toString('ascii',8,12),'WEBP');
+});
