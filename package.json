@@ -1,0 +1,12 @@
+{
+  "name": "zola-electronics-zone-public-site",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Standalone public category guide and customer enquiries for Zola Electronics Zone",
+  "scripts": {
+    "test": "node --test tests/website.test.cjs",
+    "test:browser": "node --test --test-concurrency=1 tests/website.browser.cjs",
+    "review:visuals": "node tools/capture-review.cjs"
+  },
+  "devDependencies": {"playwright-core": "1.56.0"}
+}
