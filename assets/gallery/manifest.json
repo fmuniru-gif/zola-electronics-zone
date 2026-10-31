@@ -1,7 +1,35 @@
 {
   "version": 1,
   "items": [
-    {"type":"photo","src":"assets/storefront.webp","caption":"Zola Electronics Zone storefront — Aliu Mahama Road, Tamale","alt":"Front view of Zola Electronics Zone and its electronics and appliances"},
-    {"type":"photo","src":"assets/shop-gallery.webp","caption":"Inside our shop — televisions, freezers and home appliances","alt":"Photo collage showing products inside Zola Electronics Zone"}
+    {
+      "type": "photo",
+      "src": "assets/storefront.webp",
+      "caption": "Zola Electronics Zone storefront — Aliu Mahama Road, Tamale",
+      "alt": "Front view of Zola Electronics Zone and its electronics and appliances"
+    },
+    {
+      "type": "photo",
+      "src": "assets/shop-gallery.webp",
+      "caption": "Inside our shop — televisions, freezers and home appliances",
+      "alt": "Photo collage showing products inside Zola Electronics Zone"
+    },
+    {
+      "type": "photo",
+      "src": "assets/gallery/c23a80c91db601.webp",
+      "caption": "3D view of Oscar fully-automatic washing machine",
+      "alt": "Photo showing the 3D view of Oscar automatic washing machine"
+    },
+    {
+      "type": "photo",
+      "src": "assets/gallery/956c143c1dabc4.webp",
+      "caption": "Front view of Oscar fully-automatic washing machine",
+      "alt": "Photo showing the front view of Oscar automatic washing machine"
+    },
+    {
+      "type": "photo",
+      "src": "assets/gallery/7c4c92459606fe.webp",
+      "caption": "Open view of Oscar fully-automatic washing machine",
+      "alt": "Photo showing the open view of Oscar automatic washing machine"
+    }
   ]
 }
