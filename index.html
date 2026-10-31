@@ -16,13 +16,14 @@
   <meta name="twitter:description" content="Electronics and appliances with helpful buying advice in Tamale, Ghana." />
   <meta name="twitter:image" content="https://fmuniru-gif.github.io/zola-electronics-zone/assets/storefront.webp" />
   <link rel="canonical" href="https://fmuniru-gif.github.io/zola-electronics-zone/" />
-  <meta name="zola-site-release" content="20261030-institutional-gallery-r1" />
+  <meta name="zola-site-release" content="20261031-email-gallery-owner-r1" />
   <title>TVs & Home Appliances in Tamale | Zola Electronics Zone</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="assets/zez-v2.css" />
   <script defer src="script.js"></script>
   <script defer src="assets/gallery/gallery.js"></script>
+  <link rel="stylesheet" href="assets/zez-email-fix.css" />
   <script defer src="assets/zez-procurement.js"></script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ElectronicsStore","name":"Zola Electronics Zone","description":"Electronics and home appliances shop offering product enquiries, purchase guidance and after-sales enquiries in Tamale, Ghana.","telephone":"+233553486788","address":{"@type":"PostalAddress","streetAddress":"Aliu Mahama Road, near Maccasio Fun Base","addressLocality":"Tamale","addressRegion":"Northern Region","addressCountry":"GH"},"currenciesAccepted":"GHS","url":"https://fmuniru-gif.github.io/zola-electronics-zone/","@id":"https://fmuniru-gif.github.io/zola-electronics-zone/#store","slogan":"Buy the right one.","areaServed":{"@type":"City","name":"Tamale"},"contactPoint":[{"@type":"ContactPoint","telephone":"+233553486788","contactType":"customer enquiries"},{"@type":"ContactPoint","telephone":"+233203514300","contactType":"additional customer enquiries"}],"email":"zolaelectronicszone@gmail.com"}
@@ -184,8 +185,18 @@
             <div class="zez-request-actions"><button type="button" data-procurement-channel="whatsapp">Request via WhatsApp ↗</button>
               <button type="button" data-procurement-channel="email">Request via email ↗</button></div>
             <p class="zez-privacy">Your information is used only to prepare a message on your device. Nothing is submitted to or stored by this website. Please review the draft in WhatsApp or your email app before sending.</p>
-            <div class="zez-request-status" id="zezProcurementStatus" hidden role="status"><p>If your app did not open, use this link:</p>
-              <a id="zezProcurementFallback" target="_blank" rel="noopener noreferrer">Open prepared draft</a><details><summary>Review prepared message</summary><pre id="zezProcurementPreview"></pre></details></div>
+            <div class="zez-request-status" id="zezProcurementStatus" hidden role="status">
+              <p id="zezProcurementPrompt">Your prepared request is ready. Nothing has been sent.</p>
+              <div class="zez-email-options" id="zezEmailOptions" hidden aria-label="Choose how to email your enquiry">
+                <a id="zezGmailLink" target="_blank" rel="noopener noreferrer">Open Gmail in browser ↗</a>
+                <a id="zezEmailAppLink">Use installed email app ↗</a>
+                <button type="button" id="zezCopyDraft">Copy request</button>
+              </div>
+              <p class="zez-copy-status" id="zezCopyStatus" role="status" aria-live="polite"></p>
+              <a id="zezProcurementFallback" target="_blank" rel="noopener noreferrer" hidden>Open your WhatsApp draft</a>
+              <p class="zez-email-notice">To email Zola directly, use zolaelectronicszone@gmail.com. An email account or installed mail application is required to send the draft.</p>
+              <details><summary>Review prepared message</summary><pre id="zezProcurementPreview"></pre></details>
+            </div>
             <noscript><p><a href="mailto:zolaelectronicszone@gmail.com?subject=Quotation%20or%20invoice%20enquiry">Email your enquiry</a> or <a href="https://wa.me/233553486788" target="_blank" rel="noopener noreferrer">contact us on WhatsApp</a>.</p></noscript>
           </form>
         </div>

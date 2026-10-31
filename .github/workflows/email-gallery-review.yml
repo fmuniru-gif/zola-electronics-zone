@@ -1,0 +1,39 @@
+name: Zola email and owner gallery correction (NO DEPLOY)
+on:
+  push:
+    branches: [review/zez-email-gallery-fix-20261031]
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      CHROME_PATH: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Confirm exact baseline and branch
+        run: |
+          test "$(git rev-parse origin/main)" = 1491f11593d2ef40d85a29aaefb79ec463017106
+          test "$GITHUB_REF_NAME" = review/zez-email-gallery-fix-20261031
+          git merge-base --is-ancestor 1491f11593d2ef40d85a29aaefb79ec463017106 HEAD
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Existing and new source tests
+        run: |
+          npm test
+          node --test tests/zez-v2.test.cjs
+          node --test tests/zez-email-fix.test.cjs
+      - name: Existing and new browser tests
+        run: |
+          npm run test:browser
+          node --test tests/zez-email-fix.browser.cjs
+      - name: Guard changed files
+        run: |
+          git diff --check
+          test -z "$(git status --porcelain)"
