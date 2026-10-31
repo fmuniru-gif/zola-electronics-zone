@@ -1,0 +1,45 @@
+const {test,before,after}=require('node:test'),assert=require('node:assert/strict');
+const playwright=require(process.env.PLAYWRIGHT_CORE_PATH||'playwright-core');
+const {startServer,chromeOptions,isolate}=require('./support.cjs');
+let server,browser;
+before(async()=>{server=await startServer();browser=await playwright.chromium.launch(chromeOptions());});
+after(async()=>{if(browser)await browser.close();if(server)await server.close();});
+for(const width of [390,1440])test(`full photograph viewer at ${width}px preserves uncropped photo, captions and navigation`,async()=>{
+ const context=await browser.newContext({viewport:{width,height:844}});
+ const outbound=await isolate(context,server.origin),errors=[];
+ context.on('page',p=>p.on('pageerror',e=>errors.push(String(e))));
+ const page=await context.newPage();
+ try{
+  await page.goto(server.origin,{waitUntil:'networkidle'});
+  const thumbs=page.locator('.zez-gallery-open');
+  await thumbs.first().waitFor();
+  assert.equal(await thumbs.count(),5);
+  assert.equal(await page.locator('.zez-lightbox-image').count(),0,'The closed viewer must not add an empty image');
+  await thumbs.first().click();
+  const overlay=page.locator('.zez-lightbox');
+  assert.equal(await overlay.isVisible(),true);
+  assert.equal(await page.locator('.zez-lightbox-counter').textContent(),'1 of 5');
+  assert.equal(await page.locator('.zez-lightbox-caption').textContent(),'Zola Electronics Zone storefront — Aliu Mahama Road, Tamale');
+  const img=page.locator('.zez-lightbox-image');
+  await img.evaluate(e=>e.decode());
+  assert.ok(await img.evaluate(e=>e.naturalWidth>0&&e.naturalHeight>0));
+  assert.equal(await img.evaluate(e=>getComputedStyle(e).objectFit),'contain');
+  await page.keyboard.press('ArrowRight');
+  assert.equal(await page.locator('.zez-lightbox-counter').textContent(),'2 of 5');
+  await page.locator('.zez-lightbox-next').click();
+  assert.equal(await page.locator('.zez-lightbox-counter').textContent(),'3 of 5');
+  assert.equal(await page.locator('.zez-lightbox-caption').textContent(),'3D view of Oscar fully-automatic washing machine');
+  await page.keyboard.press('Escape');
+  assert.equal(await overlay.isVisible(),false);
+  assert.equal(await page.locator('.zez-lightbox-image').count(),0,'Closing removes the enlarged image from the DOM');
+  assert.equal(await page.evaluate(()=>[...document.images].filter(i=>!i.getAttribute('src')).length),0,'No image without a source remains');
+  assert.equal(await thumbs.first().evaluate(e=>e===document.activeElement),true);
+  await page.locator('[data-gallery-filter="video"]').click();
+  assert.equal(await thumbs.count(),0);
+  await page.locator('[data-gallery-filter="all"]').click();
+  assert.equal(await thumbs.count(),5);
+  const pageSize=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,width:innerWidth}));
+  assert.ok(pageSize.scroll<=pageSize.width+1,JSON.stringify(pageSize));
+  assert.deepEqual(errors,[]);assert.equal(outbound.length,0);
+ }finally{await context.close();}
+});
