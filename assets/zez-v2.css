@@ -1,0 +1,43 @@
+/* ZEZ institutional enquiries and gallery. Extensions only: original homepage remains intact. */
+.zez-hero-institution{margin-top:15px;font-size:13px}
+.zez-hero-institution a{color:#f2ca75;text-decoration:underline;text-underline-offset:4px;font-weight:720}
+.zez-gallery-section{background:#f6f8f8}
+.zez-v2-header{display:flex;flex-wrap:wrap;gap:16px;align-items:end;justify-content:space-between;margin-bottom:26px}
+.zez-v2-header h2,.zez-institution-copy h2{font-size:clamp(32px,4vw,52px);letter-spacing:-.045em;line-height:1.1;margin:10px 0 14px;color:#102c45}
+.zez-v2-header p,.zez-institution-copy p{max-width:650px;color:#52677a;line-height:1.75}
+.zez-gallery-filters{display:flex;gap:7px;flex-wrap:wrap}
+.zez-gallery-filters button{cursor:pointer;border-radius:999px;border:1px solid #bfccd2;background:#fff;color:#17334a;padding:10px 16px;font:inherit;font-size:12px;font-weight:800;min-height:43px}
+.zez-gallery-filters button[aria-pressed="true"]{background:#132f4a;color:#fff;border-color:#132f4a}
+.zez-gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.zez-gallery-card{margin:0;min-width:0;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 12px 35px rgba(12,36,56,.10)}
+.zez-gallery-card img,.zez-gallery-card video{width:100%;height:280px;object-fit:cover;background:#e7eef2;display:block}
+.zez-gallery-card figcaption{padding:17px 20px 19px;font-size:13px;font-weight:720;color:#294354;line-height:1.5}
+.zez-gallery-status{margin:18px 0 0;color:#577082;font-size:12px}
+.zez-institutions-section{background:linear-gradient(143deg,#fff 0%,#f8f5ed 100%)}
+.zez-institution-intro{display:grid;grid-template-columns:.95fr 1.05fr;gap:50px;align-items:start}
+.zez-institution-tag{display:inline-block;font-size:11px;letter-spacing:.16em;font-weight:900;color:#a47b2b}
+.zez-org-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0 25px;padding:0;list-style:none}
+.zez-org-grid li{border:1px solid #dde3df;border-radius:8px;background:#fff;padding:13px 12px;color:#1a3a50;font-size:12.5px;font-weight:750}
+.zez-doc-note{border-left:3px solid #dcae46;padding:10px 14px;background:#fff8e8;color:#65552e;font-size:12px;line-height:1.7}
+.zez-request-panel{background:#112d46;color:#fff;padding:30px;border-radius:13px;box-shadow:0 16px 42px #102a4530}
+.zez-request-panel h3{font-size:25px;letter-spacing:-.03em;margin:0 0 8px;color:#fff}
+.zez-request-panel p{color:#c7d7e1;font-size:13px;line-height:1.6;margin:0 0 16px}
+.zez-request-panel label{display:block;color:#eff5f8;font-weight:730;font-size:12px;margin:13px 0 6px}
+.zez-request-panel input,.zez-request-panel select,.zez-request-panel textarea{display:block;width:100%;min-width:0;box-sizing:border-box;font:inherit;font-size:13px;border-radius:6px;background:#f9fbfd;border:1px solid #cbd7df;padding:12px;color:#152d41}
+.zez-request-panel textarea{min-height:96px;resize:vertical}
+.zez-request-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.zez-request-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.zez-request-actions button{border:0;border-radius:6px;min-height:49px;padding:10px;cursor:pointer;font:inherit;font-weight:820;font-size:12px;background:#e9b94b;color:#12273c}
+.zez-request-actions button:last-child{background:#edf6ef;color:#0a6349}
+.zez-request-panel .zez-privacy{font-size:11px;color:#b7cbd7;margin:13px 0 0}
+.zez-request-status{border:1px solid #7a9d9c;border-radius:8px;margin-top:15px;padding:13px;color:#e5f2eb}
+.zez-request-status a{color:#ffe093;text-decoration:underline;font-weight:850}
+.zez-request-status pre{white-space:pre-wrap;overflow-wrap:anywhere;color:#d6e7e8;font-family:inherit;font-size:11px}
+.zez-contact-extra{display:block;margin-top:5px;font-size:13px;color:#d4e2e7}
+.zez-contact-extra a{color:#e6d4a1;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.zez-footer-extra{font-size:12.5px}
+@media(max-width:1150px){.nav-inner{gap:10px}.main-nav{gap:12px}.main-nav a{font-size:12px}.nav-cta{padding:10px 12px}}
+@media(max-width:900px){.zez-institution-intro{grid-template-columns:1fr;gap:25px}}
+@media(max-width:600px){.zez-gallery-grid{grid-template-columns:1fr}.zez-gallery-card img,.zez-gallery-card video{height:240px}.zez-org-grid{grid-template-columns:1fr 1fr}.zez-request-panel{padding:23px 17px}.zez-request-row{grid-template-columns:1fr}.zez-request-actions{grid-template-columns:1fr}.zez-v2-header h2,.zez-institution-copy h2{font-size:37px}}
+@media(max-width:345px){.zez-org-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.zez-gallery-filters button{transition:none}}

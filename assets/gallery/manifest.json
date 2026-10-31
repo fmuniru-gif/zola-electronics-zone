@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "items": [
+    {"type":"photo","src":"assets/storefront.webp","caption":"Zola Electronics Zone storefront — Aliu Mahama Road, Tamale","alt":"Front view of Zola Electronics Zone and its electronics and appliances"},
+    {"type":"photo","src":"assets/shop-gallery.webp","caption":"Inside our shop — televisions, freezers and home appliances","alt":"Photo collage showing products inside Zola Electronics Zone"}
+  ]
+}
