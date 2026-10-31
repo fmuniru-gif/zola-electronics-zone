@@ -1,0 +1,39 @@
+name: Zola gallery and institutional enquiry review (NO DEPLOY)
+on:
+  push:
+    branches: [review/zola-procurement-gallery-20261030]
+permissions:
+  contents: read
+jobs:
+  safe-website-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      CHROME_PATH: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify expected production baseline and clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git rev-parse origin/main)" = 4cd7aab799fd809c7768004071b8fc21d43e5689
+          git merge-base --is-ancestor 4cd7aab799fd809c7768004071b8fc21d43e5689 HEAD
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Original source and safety checks
+        run: npm test
+      - name: New website contact/gallery safety checks
+        run: node --test tests/zez-v2.test.cjs
+      - name: Original Chrome mobile and desktop tests
+        run: npm run test:browser
+      - name: Verify test worktree remains unchanged
+        shell: bash
+        run: |
+          git diff --exit-code
+          test -z "$(git status --porcelain)"

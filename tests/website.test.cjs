@@ -33,10 +33,11 @@ test('all static links and images remain local or explicit public contact destin
   const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length);
   for(const [,href] of html.matchAll(/\b(?:href|src)="([^"]+)"/g)){
     if(href.startsWith('#'))assert.ok(ids.includes(href.slice(1)),href);
-    else if(/^(?:https?:|tel:)/.test(href)){
+    else if(/^(?:https?:|tel:|mailto:)/.test(href)){
       const url=new URL(href.replace(/&amp;/g,'&'));assert.ok(['https://wa.me','https://www.google.com','https://fmuniru-gif.github.io','null'].includes(url.origin),href);
       if(url.origin==='https://wa.me')assert.equal(url.pathname,'/233553486788');
-      if(url.protocol==='tel:')assert.equal(url.pathname,'+233553486788');
+      if(url.protocol==='tel:')assert.ok(['+233553486788','+233203514300'].includes(url.pathname));
+      if(url.protocol==='mailto:')assert.equal(url.pathname,'zolaelectronicszone@gmail.com');
     }else assert.ok(fs.existsSync(path.join(root,href)),href);
   }
 });

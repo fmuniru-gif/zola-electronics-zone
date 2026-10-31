@@ -54,7 +54,7 @@ test('trade-in WhatsApp draft is correctly encoded and is never sent or stored b
 });
 test('no-JavaScript visitors retain navigation, FAQ and direct contact without submitting enquiry fields',async()=>{
   const f=await fixture({javaScriptEnabled:false});try{
-    assert.equal(await f.page.locator('#mainNav').isVisible(),true);assert.equal(await f.page.locator('#menuToggle').isVisible(),false);assert.equal(await f.page.locator('#enquirySubmit').isDisabled(),true);assert.equal(await f.page.locator('#productSearch').isDisabled(),true);assert.equal(await f.page.locator('.product-card:visible').count(),6);assert.equal(await f.page.locator('noscript a[href="https://wa.me/233553486788"]').isVisible(),true);
+    assert.equal(await f.page.locator('#mainNav').isVisible(),true);assert.equal(await f.page.locator('#menuToggle').isVisible(),false);assert.equal(await f.page.locator('#enquirySubmit').isDisabled(),true);assert.equal(await f.page.locator('#productSearch').isDisabled(),true);assert.equal(await f.page.locator('.product-card:visible').count(),6);assert.equal(await f.page.locator('#enquiryForm noscript a[href="https://wa.me/233553486788"]').isVisible(),true);assert.equal(await f.page.locator('#zezProcurementForm noscript a[href="https://wa.me/233553486788"]').isVisible(),true);
     await f.page.locator('.faq-items summary').first().click();assert.equal(await f.page.locator('.faq-items details').first().getAttribute('open'),'');assert.equal(f.outbound.length,0);
   }finally{await f.context.close();}
 });
