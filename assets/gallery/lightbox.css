@@ -1,0 +1,20 @@
+/* Full photo viewer: the gallery cards remain cropped, the enlarged image never is. */
+.zez-gallery-open{appearance:none;display:block;padding:0;width:100%;border:0;background:transparent;text-align:inherit;cursor:zoom-in}
+.zez-gallery-open:focus-visible{outline:4px solid #e9b94b;outline-offset:-4px}
+.zez-lightbox[hidden],.zez-lightbox-prev[hidden],.zez-lightbox-next[hidden]{display:none!important}
+.zez-lightbox{position:fixed;z-index:9999;inset:0;display:grid;place-items:center;padding:12px;box-sizing:border-box}
+.zez-lightbox-backdrop{position:absolute;inset:0;background:rgba(4,15,28,.94)}
+.zez-lightbox-panel{position:relative;z-index:1;box-sizing:border-box;width:min(1200px,100%);height:min(920px,calc(100dvh - 24px));background:#101f2d;color:#fff;border:1px solid #536677;border-radius:11px;display:flex;flex-direction:column;min-height:0;overflow:hidden;box-shadow:0 12px 54px #0009}
+.zez-lightbox-toolbar{padding:10px 15px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #ffffff30}
+.zez-lightbox-counter{font-size:13px;font-weight:700;color:#e0e7ec}
+.zez-lightbox-close,.zez-lightbox-prev,.zez-lightbox-next{appearance:none;border:1px solid #81929e;background:#1a3448;color:#fff;border-radius:7px;font-size:14px;font-weight:700;min-width:48px;min-height:44px;cursor:pointer}
+.zez-lightbox-close{padding:0 16px}
+.zez-lightbox-stage{display:flex;align-items:center;justify-content:center;flex:1;min-height:0;gap:8px;padding:10px;box-sizing:border-box}
+.zez-lightbox-prev,.zez-lightbox-next{font-size:29px;flex:none}
+.zez-lightbox-image{display:block;width:auto;height:auto;max-width:calc(100% - 112px);max-height:100%;object-fit:contain;min-width:0}
+.zez-lightbox-footer{padding:9px 18px 14px;border-top:1px solid #ffffff30;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.zez-lightbox-caption{font-size:13px;line-height:1.5;margin:0;color:#fff;font-weight:700}
+.zez-lightbox-original{color:#f4ce7e;font-size:12px;text-decoration:underline}
+.zez-lightbox :is(button,a):focus-visible{outline:3px solid #f4ce7e;outline-offset:2px}
+@media(max-width:600px){.zez-lightbox{padding:0}.zez-lightbox-panel{height:100dvh;width:100%;border:0;border-radius:0}.zez-lightbox-stage{gap:3px;padding:5px}.zez-lightbox-prev,.zez-lightbox-next{min-width:38px;min-height:48px;font-size:25px}.zez-lightbox-image{max-width:calc(100% - 86px)}.zez-lightbox-footer{padding:12px}}
+@media(prefers-reduced-motion:reduce){.zez-lightbox *{scroll-behavior:auto!important;transition:none!important}}

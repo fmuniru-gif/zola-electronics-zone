@@ -21,7 +21,16 @@
         media=document.createElement('img');media.loading='lazy';media.alt=item.alt||item.caption||'Shop photo';
       }
       media.src=item.src;
-      figure.appendChild(media);
+      if(item.type==='photo'){
+        const trigger=document.createElement('button');
+        trigger.type='button';
+        trigger.className='zez-gallery-open';
+        trigger.setAttribute('aria-label','View full photo: '+(item.caption||'Zola gallery photo'));
+        trigger.appendChild(media);
+        figure.appendChild(trigger);
+      }else{
+        figure.appendChild(media);
+      }
       const caption=document.createElement('figcaption');caption.textContent=item.caption||'Zola Electronics Zone';
       figure.appendChild(caption);grid.appendChild(figure);
     }

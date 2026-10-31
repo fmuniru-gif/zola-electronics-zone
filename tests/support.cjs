@@ -1,6 +1,14 @@
 const http=require('node:http'),fs=require('node:fs'),path=require('node:path'),{execFileSync}=require('node:child_process');
 const root=path.resolve(__dirname,'..');
 const playable=new Set(['index.html','styles.css','script.js','robots.txt','sitemap.xml',...fs.readdirSync(path.join(root,'assets')).map(name=>'assets/'+name)]);
+// GALLERY_ASSET_SERVER_ALLOWLIST_R1: serve only known gallery resource types from this repository.
+// The older test server only enumerated assets/*, leaving assets/gallery/* as HTTP 404.
+const galleryDir=path.join(root,'assets','gallery');
+for(const entry of fs.readdirSync(galleryDir,{withFileTypes:true})){
+  if(!entry.isFile())continue;
+  if(/^(?:manifest\.json|gallery\.js|lightbox\.(?:js|css)|[a-zA-Z0-9_-]+\.(?:webp|jpe?g|png|mp4|webm))$/.test(entry.name))
+    playable.add('assets/gallery/'+entry.name);
+}
 async function startServer(ref){
   const memo=new Map(),requests=[];
   const server=http.createServer((req,res)=>{
