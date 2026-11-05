@@ -1,0 +1,36 @@
+name: Tamale buying guides review (NO DEPLOY)
+on:
+  push:
+    branches: [feature/tamale-buying-guides-20261105]
+permissions:
+  contents: read
+jobs:
+  local-seo-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      CHROME_PATH: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify reviewed production baseline
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git rev-parse origin/main)" = ea236f187d600acc0e8784d76c538b13976c3285
+          git merge-base --is-ancestor ea236f187d600acc0e8784d76c538b13976c3285 HEAD
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: All source, contact, gallery and SEO checks
+        run: npm test
+      - name: Desktop, mobile, guide navigation, contact and no-JavaScript browser checks
+        run: npm run test:browser
+      - name: Clean source after checks
+        run: |
+          git diff --exit-code
+          test -z "$(git status --porcelain)"

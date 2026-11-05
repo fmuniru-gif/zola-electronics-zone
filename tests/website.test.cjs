@@ -26,7 +26,7 @@ test('public metadata describes one factual local business without offer or stoc
   assert.equal(schema['@type'],'ElectronicsStore');assert.equal(schema.name,'Zola Electronics Zone');assert.equal(schema.telephone,'+233553486788');assert.equal(schema.slogan,'Buy the right one.');
   assert.equal(schema.address.streetAddress,'Aliu Mahama Road, near Maccasio Fun Base');assert.equal(schema.address.addressLocality,'Tamale');
   assert.ok(!schema.offers&&!schema.openingHours&&!schema.aggregateRating&&!schema.priceRange);
-  const canonical=html.match(/rel="canonical" href="([^"]+)"/)[1];assert.equal(canonical,'https://fmuniru-gif.github.io/zola-electronics-zone/');assert.ok(read('sitemap.xml').includes(canonical));assert.ok(read('robots.txt').includes(canonical+'sitemap.xml'));
+  const canonical=html.match(/rel="canonical" href="([^"]+)"/)[1];assert.equal(canonical,'https://zolaelectronicszone.com/');assert.ok(read('sitemap.xml').includes(canonical));assert.ok(read('robots.txt').includes(canonical+'sitemap.xml'));
   assert.ok(html.includes('not a live stock or price list'));assert.ok(html.includes('no trade-in is guaranteed'));assert.ok(html.includes('Warranty coverage and terms vary'));
 });
 test('all static links and images remain local or explicit public contact destinations',()=>{
@@ -34,7 +34,7 @@ test('all static links and images remain local or explicit public contact destin
   for(const [,href] of html.matchAll(/\b(?:href|src)="([^"]+)"/g)){
     if(href.startsWith('#'))assert.ok(ids.includes(href.slice(1)),href);
     else if(/^(?:https?:|tel:|mailto:)/.test(href)){
-      const url=new URL(href.replace(/&amp;/g,'&'));assert.ok(['https://wa.me','https://www.google.com','https://fmuniru-gif.github.io','null'].includes(url.origin),href);
+      const url=new URL(href.replace(/&amp;/g,'&'));assert.ok(['https://wa.me','https://www.google.com','https://fmuniru-gif.github.io','https://zolaelectronicszone.com','null'].includes(url.origin),href);
       if(url.origin==='https://wa.me')assert.equal(url.pathname,'/233553486788');
       if(url.protocol==='tel:')assert.ok(['+233553486788','+233203514300'].includes(url.pathname));
       if(url.protocol==='mailto:')assert.equal(url.pathname,'zolaelectronicszone@gmail.com');

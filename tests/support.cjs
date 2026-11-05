@@ -1,6 +1,7 @@
 const http=require('node:http'),fs=require('node:fs'),path=require('node:path'),{execFileSync}=require('node:child_process');
 const root=path.resolve(__dirname,'..');
 const playable=new Set(['index.html','styles.css','script.js','robots.txt','sitemap.xml',...fs.readdirSync(path.join(root,'assets')).map(name=>'assets/'+name)]);
+for(const slug of ['televisions-tamale','refrigerators-freezers-tamale','washing-machines-tamale','air-conditioners-tamale'])playable.add('guides/'+slug+'.html');
 // GALLERY_ASSET_SERVER_ALLOWLIST_R1: serve only known gallery resource types from this repository.
 // The older test server only enumerated assets/*, leaving assets/gallery/* as HTTP 404.
 const galleryDir=path.join(root,'assets','gallery');
