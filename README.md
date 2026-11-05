@@ -4,11 +4,18 @@ Standalone static website for **Zola Electronics Zone — “Buy the right one.�
 
 The existing navy/gold design, six category illustrations and supplied promotional photography are retained. The experience review adds a category finder, practical buying prompts, budget/upgrade enquiry messaging, clearer customer care, optional TV trade-in context, persistent mobile contact actions and more useful WhatsApp drafts.
 
-## Review boundary
+## Current SEO review
 
-This change is on `review/public-website-experience-r1`, based on `812a139808b85f0fad650208d18b5883bbfe7300`. It must be reviewed through its draft PR. It has **not been merged or deployed by this work**. The review workflow only tests and saves screenshots; it cannot publish the site.
+The public canonical domain is `https://zolaelectronicszone.com/`.
+This local review is on `feature/tamale-buying-guides-20261105`, based on production
+`ea236f187d600acc0e8784d76c538b13976c3285`. Four crawlable appliance buying guides,
+homepage links and a five-URL sitemap are prepared. The approved logo and navy/gold
+branding are retained. All source and browser checks are included in `npm test`
+and `npm run test:browser`.
 
-The canonical URL configured in source is `https://fmuniru-gif.github.io/zola-electronics-zone/`. If the eventual hostname changes, update canonical/share/schema URLs, `robots.txt` and `sitemap.xml` together before a separately approved publication.
+**Not published:** the connected GitHub integration rejected review-branch creation
+with HTTP 403. This review has not changed the published website. See
+`docs/local-seo-review.md` for validation and remaining publication steps.
 
 ## Public-content rules
 

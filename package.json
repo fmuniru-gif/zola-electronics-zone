@@ -4,8 +4,8 @@
   "private": true,
   "description": "Standalone public category guide and customer enquiries for Zola Electronics Zone",
   "scripts": {
-    "test": "node --test tests/website.test.cjs",
-    "test:browser": "node --test --test-concurrency=1 tests/website.browser.cjs",
+    "test": "node --test tests/*.test.cjs",
+    "test:browser": "node --test --test-concurrency=1 tests/*.browser.cjs",
     "review:visuals": "node tools/capture-review.cjs"
   },
   "devDependencies": {"playwright-core": "1.56.0"}

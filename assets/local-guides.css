@@ -1,0 +1,21 @@
+/* Zola Electronics Zone — supplementary local buying guides; no JavaScript or tracking. */
+.local-guides{padding:4rem 0;background:#f7f6f2;color:#183048}
+.local-guides .wrap{box-sizing:border-box;width:100%;max-width:1180px;margin:auto;padding:0 1.5rem}
+.local-guides h2{font-size:clamp(1.75rem,3vw,2.4rem);margin:.35rem 0 1rem}
+.local-guides p{line-height:1.7;max-width:75ch}
+.local-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1.5rem}
+.local-guide-card{background:white;border:1px solid #e4e2dc;border-radius:12px;padding:1.5rem}
+.local-guide-card h3{font-size:1.22rem;margin:0 0 .5rem}.local-guide-card a,.guide-body a{color:#0c4c79;text-decoration:underline;text-underline-offset:3px}
+.local-guide-card a:hover,.guide-body a:hover{text-decoration-thickness:2px}
+.guide-page{margin:0;background:#faf9f5;color:#172b40;min-height:100vh;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.guide-page *{box-sizing:border-box}.guide-page a:focus-visible{outline:3px solid #bf8d26;outline-offset:4px}.guide-page .skip-link{position:absolute;left:12px;top:-90px;padding:10px 16px;background:#ffe0a1;color:#172b40;z-index:10}.guide-page .skip-link:focus{top:12px}
+.guide-top{background:#0c233a;color:white;padding:1rem 0}.guide-top .guide-wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.guide-wrap{max-width:940px;margin:0 auto;padding:0 1.5rem}.guide-top a{color:white}.guide-brand{display:flex;align-items:center;gap:.75rem;font-weight:750;letter-spacing:.035em}.guide-brand img{width:52px;height:52px;flex-shrink:0}.guide-brand small{display:block;color:#ffe0a1;font-weight:500;letter-spacing:0;margin-top:.2rem}
+.guide-body{padding:3rem 0 4rem}.guide-body h1{font-size:clamp(2rem,4.5vw,3.25rem);line-height:1.15;margin:.8rem 0 1.2rem}
+.guide-body h2{font-size:1.4rem;margin:2.25rem 0 .5rem}.guide-body p,.guide-body li{line-height:1.7;font-size:1.06rem;max-width:75ch}
+.guide-lead{font-size:1.18rem!important;color:#3c5061}.guide-breadcrumbs{font-size:.92rem}.guide-breadcrumbs a{color:#0c4c79}
+.guide-checklist{padding-left:1.25rem}.guide-checklist li{padding:.22rem 0}.guide-note{padding:1.2rem 1.5rem;background:#fff4d7;border-left:4px solid #bf8d26;border-radius:5px;margin-top:2rem}
+.guide-cta{background:#0c233a;color:white;border-radius:12px;padding:1.5rem 2rem;margin:2.3rem 0}.guide-cta a{color:#ffe0a1}
+.guide-links{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.5rem}.guide-links a{display:inline-block;padding:.6rem .8rem;border:1px solid #cbd4d9;border-radius:6px}
+.guide-footer{background:#0c233a;color:#fff;padding:1.3rem 0;font-size:.92rem}.guide-footer a{color:#fff}
+@media(max-width:640px){.local-guide-grid{grid-template-columns:1fr}.guide-body{padding:1.8rem 0}.guide-top .guide-wrap{display:block}.guide-top a{display:inline-block;margin-top:.45rem}.guide-top .guide-brand{display:flex}.guide-top .guide-brand span{font-size:.86rem}.guide-body h1{overflow-wrap:anywhere}}
