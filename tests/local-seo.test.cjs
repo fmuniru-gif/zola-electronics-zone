@@ -6,6 +6,7 @@ const read=(p)=>fs.readFileSync(path.join(root,p),'utf8');
 const home=read('index.html'),sitemap=read('sitemap.xml');
 const names=['televisions-tamale','refrigerators-freezers-tamale','washing-machines-tamale','air-conditioners-tamale'];
 test('each local guide has an indexable distinct canonical, intent title and helpful content',()=>{
+  assert.ok(sitemap.startsWith('<?xml version="1.0" encoding="UTF-8"?>'), 'XML declaration must start at the first byte so search engines can parse the sitemap');
   const titles=new Set();
   for(const slug of names){
     const filename='guides/'+slug+'.html',page=read(filename),url='https://zolaelectronicszone.com/'+filename;
