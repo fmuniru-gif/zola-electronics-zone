@@ -47,3 +47,16 @@ input:focus-visible,summary:focus-visible{outline:3px solid #b57c12;outline-offs
 
 /* Keep long shop contact details inside the existing mobile footer columns. */
 .footer-grid>div{min-width:0}.footer-grid a{overflow-wrap:anywhere}
+
+/* Direct shop links and an optional customer review invitation. */
+.map-listing-link{margin-left:0;display:block;margin-top:12px;font-size:.88rem}
+.review-section{background:#f6f2e9;padding:64px 0}
+.review-card{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:44px;align-items:center}
+.review-copy h2{font-size:clamp(2rem,4vw,3.4rem);line-height:1.08;margin:16px 0;color:var(--navy,#0e2030)}
+.review-copy h2 em{font-family:Georgia,serif;font-weight:400}
+.review-copy p{max-width:600px;line-height:1.7}
+.review-actions{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:24px}
+.review-qr{margin:0;text-align:center}
+.review-qr img{display:block;width:180px;height:180px;max-width:100%;background:#fff}
+.review-qr figcaption{font-size:.8rem;line-height:1.5;margin-top:10px}
+@media(max-width:600px){.review-section{padding:44px 0}.review-card{grid-template-columns:minmax(0,1fr);gap:28px}.review-qr{justify-self:start}.review-actions{gap:20px}.review-actions .button{white-space:normal;text-align:center}}
