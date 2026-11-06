@@ -56,6 +56,7 @@ input:focus-visible,summary:focus-visible{outline:3px solid #b57c12;outline-offs
 .review-copy h2 em{font-family:Georgia,serif;font-weight:400}
 .review-copy p{max-width:600px;line-height:1.7}
 .review-actions{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:24px}
+.review-actions .button{width:auto}
 .review-qr{margin:0;text-align:center}
 .review-qr img{display:block;width:180px;height:180px;max-width:100%;background:#fff}
 .review-qr figcaption{font-size:.8rem;line-height:1.5;margin-top:10px}
