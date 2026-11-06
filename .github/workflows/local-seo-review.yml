@@ -1,7 +1,7 @@
-name: Tamale buying guides review (NO DEPLOY)
+name: Shop directions and reviews (NO DEPLOY)
 on:
   push:
-    branches: [fix/sitemap-xml-20261105]
+    branches: [feature/local-directions-reviews-20261106]
 permissions:
   contents: read
 jobs:
@@ -20,8 +20,8 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          test "$(git rev-parse origin/main)" = 7bac270db640d76c18b6db270ebbd959c6373e06
-          git merge-base --is-ancestor 7bac270db640d76c18b6db270ebbd959c6373e06 HEAD
+          test "$(git rev-parse origin/main)" = e496df9596962f772cdefe8f9d7a813c67d6892d
+          git merge-base --is-ancestor e496df9596962f772cdefe8f9d7a813c67d6892d HEAD
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
